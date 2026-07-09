@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    namespace "com.rahnoor.app"
+    namespace "com.rahnoor"
 
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.rahnoor.app"
+        applicationId "com.rahnoor"
         minSdk 23
         targetSdk 34
         versionCode 1
