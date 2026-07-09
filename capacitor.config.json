@@ -1,0 +1,8 @@
+{
+  "appId": "com.rahnoor.app",
+  "appName": "راه نور",
+  "webDir": ".",
+  "server": {
+    "androidScheme": "https"
+  }
+}
