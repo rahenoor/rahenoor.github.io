@@ -1,0 +1,17 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace "com.rahnoor.app"
+
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.rahnoor.app"
+        minSdk 23
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+}
