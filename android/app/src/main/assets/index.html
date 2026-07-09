@@ -1,0 +1,2559 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>راه نور</title>
+
+<meta name="theme-color" content="#064b2a">
+
+<link rel="manifest" href="manifest.json">
+
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800;900&display=swap');
+
+
+:root{
+
+--green:#064b2a;
+--green2:#0b8050;
+--gold:#d9b44a;
+
+--bg:#f4f7f1;
+--card:#ffffffcc;
+
+--text:#142018;
+
+--shadow:0 15px 40px rgba(0,0,0,.12);
+
+}
+
+
+
+.dark{
+
+--bg:#07110c;
+--card:#18251dcc;
+--text:#fff;
+
+}
+
+
+
+*{
+
+box-sizing:border-box;
+font-family:Vazirmatn,sans-serif;
+
+}
+
+
+
+body{
+
+margin:0;
+
+background:var(--bg);
+
+color:var(--text);
+
+transition:.4s;
+
+min-height:100vh;
+
+}
+
+
+
+
+header{
+
+background:
+
+linear-gradient(
+135deg,
+#064b2a,
+#02150a
+);
+
+color:white;
+
+padding:35px 25px 55px;
+
+border-radius:0 0 45px 45px;
+
+box-shadow:var(--shadow);
+
+}
+
+
+
+
+.logo{
+
+font-size:42px;
+
+font-weight:900;
+
+}
+
+
+
+.logo span{
+
+color:var(--gold);
+
+}
+
+
+
+header p{
+
+opacity:.8;
+
+}
+
+
+
+
+
+main{
+
+padding:20px;
+
+padding-bottom:120px;
+
+max-width:1200px;
+
+margin:auto;
+
+}
+
+
+
+
+.grid{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(250px,1fr));
+
+gap:20px;
+
+}
+
+
+
+
+.card{
+
+background:var(--card);
+
+backdrop-filter:blur(20px);
+
+border-radius:28px;
+
+padding:22px;
+
+box-shadow:var(--shadow);
+
+margin-bottom:20px;
+
+}
+
+
+
+.title{
+
+font-size:19px;
+
+font-weight:800;
+
+color:var(--green2);
+
+margin-bottom:15px;
+
+}
+
+
+.dark .title{
+
+color:var(--gold);
+
+}
+
+
+
+
+.clock{
+
+font-size:48px;
+
+text-align:center;
+
+font-weight:900;
+
+color:var(--gold);
+
+}
+
+
+
+
+button{
+
+border:0;
+
+padding:14px 22px;
+
+border-radius:25px;
+
+background:
+
+linear-gradient(
+135deg,
+var(--green),
+var(--green2)
+);
+
+color:white;
+
+cursor:pointer;
+
+font-size:15px;
+
+}
+
+
+
+
+input{
+
+width:100%;
+
+padding:15px;
+
+border-radius:20px;
+
+border:0;
+
+background:#ffffff88;
+
+font-size:16px;
+
+}
+
+
+
+
+.page{
+
+display:none;
+
+}
+
+
+
+.page.active{
+
+display:block;
+
+}
+
+
+
+
+.bottom-nav{
+
+position:fixed;
+
+bottom:18px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:92%;
+
+max-width:600px;
+
+background:var(--card);
+
+backdrop-filter:blur(20px);
+
+border-radius:35px;
+
+padding:14px;
+
+display:flex;
+
+justify-content:space-around;
+
+box-shadow:var(--shadow);
+
+z-index:999;
+
+}
+
+
+
+.bottom-nav button{
+
+background:none;
+
+padding:5px;
+
+font-size:25px;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+
+☪ راه <span>نور</span>
+
+</div>
+
+
+<p>
+
+دستیار هوشمند معنوی
+
+</p>
+
+
+</header>
+
+
+
+<main>
+<!-- صفحه اصلی -->
+
+<section id="home" class="page active">
+
+
+<div class="grid">
+
+
+<div class="card">
+
+<div class="title">
+
+🕒 ساعت زنده
+
+</div>
+
+
+<div id="clock" class="clock">
+
+00:00:00
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="card">
+
+<div class="title">
+
+📅 تاریخ امروز
+
+</div>
+
+
+<div id="date">
+
+در حال دریافت تاریخ...
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<div class="title">
+
+🕌 نماز بعدی
+
+</div>
+
+
+<h3 id="nextPrayer">
+
+در حال دریافت...
+
+</h3>
+
+
+<div id="countdown">
+
+00:00:00
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<div class="title">
+
+📖 آیه روز
+
+</div>
+
+
+<p>
+
+﴿إِنَّ مَعَ الْعُسْرِ يُسْرًا﴾
+
+</p>
+
+
+<p>
+
+همانا با سختی آسانی است.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<div class="title">
+
+🤍 حدیث روز
+
+</div>
+
+
+<p>
+
+بهترین مردم کسی است که برای مردم سودمندتر باشد.
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- صفحه اوقات شرعی -->
+
+
+<section id="prayer" class="page">
+
+
+<div class="card">
+
+
+<div class="title">
+
+📍 موقعیت و اوقات شرعی
+
+</div>
+
+
+<p id="location">
+
+برای دریافت مکان اجازه دهید
+
+</p>
+
+
+<button onclick="getPrayer()">
+
+دریافت اوقات شرعی
+
+</button>
+
+
+</div>
+
+
+
+
+
+<div class="grid">
+
+
+<div class="card">
+
+<div class="title">🌅 صبح</div>
+
+<b id="fajr">--:--</b>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="title">🌞 طلوع</div>
+
+<b id="sunrise">--:--</b>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="title">🕛 ظهر</div>
+
+<b id="dhuhr">--:--</b>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="title">🌇 عصر</div>
+
+<b id="asr">--:--</b>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="title">🌆 مغرب</div>
+
+<b id="maghrib">--:--</b>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="title">🌙 عشاء</div>
+
+<b id="isha">--:--</b>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- قرآن -->
+
+
+<section id="quran" class="page">
+
+
+<div class="card">
+
+
+<div class="title">
+
+📖 قرآن کریم
+
+</div>
+
+
+<input id="search" placeholder="جستجوی سوره">
+
+
+<div id="surahList">
+
+در حال آماده سازی قرآن...
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- تسبیح -->
+
+
+<section id="tasbih" class="page">
+
+
+<div class="card">
+
+
+<div class="title">
+
+📿 تسبیح دیجیتال
+
+</div>
+
+
+
+<div id="tasbihNumber" class="clock">
+
+0
+
+</div>
+
+
+
+<center>
+
+
+<button onclick="increaseTasbih()">
+
+ذکر
+
+</button>
+
+
+
+<button onclick="resetTasbih()">
+
+ریست
+
+</button>
+
+
+</center>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- قبله -->
+
+
+<section id="qibla" class="page">
+
+
+<div class="card">
+
+
+<div class="title">
+
+🧭 قبله نما
+
+</div>
+
+
+<div style="font-size:90px;text-align:center">
+
+🕋
+
+</div>
+
+
+<p id="qiblaInfo">
+
+در انتظار موقعیت...
+
+</p>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- تنظیمات -->
+
+
+<section id="settings" class="page">
+
+
+<div class="card">
+
+
+<div class="title">
+
+⚙ تنظیمات
+
+</div>
+
+
+
+<button onclick="toggleDark()">
+
+حالت شب / روز
+
+</button>
+
+
+<br><br>
+
+
+<button onclick="enableNotification()">
+
+فعال کردن اعلان
+
+</button>
+
+
+
+</div>
+
+
+</section>
+<!-- منوی پایین برنامه -->
+
+
+<div class="bottom-nav">
+
+
+<button onclick="openPage('home')">
+
+🏠
+
+</button>
+
+
+
+<button onclick="openPage('prayer')">
+
+🕌
+
+</button>
+
+
+
+<button onclick="openPage('quran')">
+
+📖
+
+</button>
+
+
+
+<button onclick="openPage('tasbih')">
+
+📿
+
+</button>
+
+
+
+<button onclick="openPage('qibla')">
+
+🧭
+
+</button>
+
+
+
+<button onclick="openPage('settings')">
+
+⚙️
+
+</button>
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+// =============================
+// ساعت زنده
+// =============================
+
+
+function updateClock(){
+
+
+let now=new Date();
+
+
+document.getElementById("clock").innerHTML=
+
+now.toLocaleTimeString(
+"fa-IR",
+{
+hour12:false
+}
+);
+
+
+
+}
+
+
+
+setInterval(updateClock,1000);
+
+updateClock();
+
+
+
+
+
+
+
+// =============================
+// تاریخ
+// =============================
+
+
+function updateDate(){
+
+
+let now=new Date();
+
+
+document.getElementById("date").innerHTML=
+
+
+`
+
+📅 شمسی:
+
+${now.toLocaleDateString("fa-IR")}
+
+
+<br><br>
+
+
+🌍 میلادی:
+
+${now.toLocaleDateString("en-US")}
+
+
+`;
+
+
+
+}
+
+
+updateDate();
+
+
+
+
+
+
+
+
+// =============================
+// تغییر صفحات
+// =============================
+
+
+function openPage(id){
+
+
+
+document
+.querySelectorAll(".page")
+.forEach(
+
+p=>p.classList.remove("active")
+
+);
+
+
+
+document
+.getElementById(id)
+.classList.add("active");
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =============================
+// حالت تاریک
+// =============================
+
+
+function toggleDark(){
+
+
+
+document.body.classList.toggle("dark");
+
+
+
+localStorage.setItem(
+
+"dark",
+
+document.body.classList.contains("dark")
+
+);
+
+
+}
+
+
+
+
+if(
+localStorage.getItem("dark")==="true"
+){
+
+document.body.classList.add("dark");
+
+}
+
+
+
+
+
+
+
+// =============================
+// تسبیح
+// =============================
+
+
+let tasbihCount=
+
+Number(
+localStorage.getItem("tasbih")
+||
+0
+);
+
+
+
+function drawTasbih(){
+
+
+document.getElementById(
+"tasbihNumber"
+)
+.innerHTML=
+
+tasbihCount;
+
+
+}
+
+
+
+drawTasbih();
+
+
+
+
+
+function increaseTasbih(){
+
+
+
+tasbihCount++;
+
+
+
+localStorage.setItem(
+
+"tasbih",
+
+tasbihCount
+
+);
+
+
+
+drawTasbih();
+
+
+
+if(navigator.vibrate){
+
+navigator.vibrate(40);
+
+}
+
+
+}
+
+
+
+
+
+
+
+function resetTasbih(){
+
+
+
+tasbihCount=0;
+
+
+
+localStorage.setItem(
+
+"tasbih",
+
+0
+
+);
+
+
+
+drawTasbih();
+
+
+}// =============================
+// اوقات شرعی + GPS
+// =============================
+
+
+let prayerTimes = {};
+let savedPrayer = JSON.parse(
+localStorage.getItem("savedPrayer") || "null"
+);
+
+
+let todayKey = new Date().toLocaleDateString("fa-IR");
+
+
+if(savedPrayer && savedPrayer.date === todayKey){
+
+prayerTimes = savedPrayer.times;
+
+}
+let countdownInterval;
+
+
+
+function getPrayer(){
+
+
+if(!navigator.geolocation){
+
+alert("GPS پشتیبانی نمی‌شود");
+
+return;
+
+}
+
+
+
+navigator.geolocation.getCurrentPosition(
+
+function(position){
+
+
+
+let lat = position.coords.latitude;
+
+let lon = position.coords.longitude;
+
+
+
+document.getElementById("location").innerHTML=
+
+"📍 موقعیت دریافت شد، در حال دریافت اوقات شرعی...";
+
+
+
+loadPrayer(lat,lon);
+
+
+
+},
+
+
+function(){
+
+document.getElementById("location").innerHTML=
+
+"❌ اجازه دسترسی به مکان داده نشد";
+
+
+}
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+async function loadPrayer(lat,lon){
+
+
+try{
+
+
+let d=new Date();
+
+
+
+let url=
+
+`https://api.aladhan.com/v1/timings/${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}?latitude=${lat}&longitude=${lon}&method=7`;
+
+
+
+
+let res=
+
+await fetch(url);
+
+
+
+let data=
+
+await res.json();
+
+
+
+
+prayerTimes=data.data.timings;
+localStorage.setItem(
+
+"savedPrayer",
+
+JSON.stringify({
+
+date:
+new Date().toLocaleDateString("fa-IR"),
+
+times:
+prayerTimes
+
+})
+
+);
+
+
+document.getElementById("fajr").innerHTML=
+
+prayerTimes.Fajr;
+
+
+document.getElementById("sunrise").innerHTML=
+
+prayerTimes.Sunrise;
+
+
+document.getElementById("dhuhr").innerHTML=
+
+prayerTimes.Dhuhr;
+
+
+document.getElementById("asr").innerHTML=
+
+prayerTimes.Asr;
+
+
+document.getElementById("maghrib").innerHTML=
+
+prayerTimes.Maghrib;
+
+
+document.getElementById("isha").innerHTML=
+
+prayerTimes.Isha;
+
+
+
+
+document.getElementById("location").innerHTML=
+
+"✅ اوقات شرعی دریافت شد";
+
+
+
+findNextPrayer();
+
+
+
+}
+
+catch(error){
+
+
+
+document.getElementById("location").innerHTML=
+
+"❌ خطا در دریافت اوقات شرعی";
+
+
+console.log(error);
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+function findNextPrayer(){
+
+
+
+let list=[
+
+
+["صبح",prayerTimes.Fajr],
+
+
+["ظهر",prayerTimes.Dhuhr],
+
+
+["عصر",prayerTimes.Asr],
+
+
+["مغرب",prayerTimes.Maghrib],
+
+
+["عشاء",prayerTimes.Isha]
+
+
+];
+
+
+
+
+let now=new Date();
+
+
+
+for(let item of list){
+
+
+
+let t=new Date();
+
+
+
+let p=item[1].split(":");
+
+
+
+t.setHours(
+Number(p[0]),
+Number(p[1]),
+0
+);
+
+
+
+if(t>now){
+
+
+
+document.getElementById("nextPrayer").innerHTML=
+
+"نماز بعدی: "+item[0];
+
+
+
+startCountdown(t);
+
+
+
+return;
+
+
+}
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+function startCountdown(time){
+
+
+
+clearInterval(countdownInterval);
+
+
+
+countdownInterval=setInterval(()=>{
+
+
+
+let diff=time-new Date();
+
+
+
+if(diff<=0){
+
+findNextPrayer();
+
+return;
+
+}
+
+
+
+let h=Math.floor(diff/3600000);
+
+
+let m=Math.floor(
+(diff%3600000)/60000
+);
+
+
+let s=Math.floor(
+(diff%60000)/1000
+);
+
+
+
+document.getElementById("countdown").innerHTML=
+
+`${String(h).padStart(2,"0")}:
+${String(m).padStart(2,"0")}:
+${String(s).padStart(2,"0")}`;
+
+
+
+},1000);
+
+
+}// =============================
+// قرآن کریم
+// =============================
+
+
+const surahs=[
+
+"حمد",
+"بقره",
+"آل عمران",
+"نساء",
+"مائده",
+"انعام",
+"اعراف",
+"انفال",
+"توبه",
+"یونس",
+"هود",
+"یوسف",
+"رعد",
+"ابراهیم",
+"حجر",
+"نحل",
+"اسراء",
+"کهف",
+"مریم",
+"طه",
+"انبیا",
+"حج",
+"مؤمنون",
+"نور",
+"فرقان",
+"شعراء",
+"نمل",
+"قصص",
+"عنکبوت",
+"روم",
+"لقمان",
+"سجده",
+"احزاب",
+"سبأ",
+"فاطر",
+"یس",
+"صافات",
+"ص",
+"زمر",
+"غافر",
+"فصلت",
+"شوری",
+"زخرف",
+"دخان",
+"جاثیه",
+"احقاف",
+"محمد",
+"فتح",
+"حجرات",
+"ق",
+"ذاریات",
+"طور",
+"نجم",
+"قمر",
+"رحمن",
+"واقعه",
+"حدید",
+"مجادله",
+"حشر",
+"ممتحنه",
+"صف",
+"جمعه",
+"منافقون",
+"تغابن",
+"طلاق",
+"تحریم",
+"ملک",
+"قلم",
+"حاقه",
+"معارج",
+"نوح",
+"جن",
+"مزمل",
+"مدثر",
+"قیامت",
+"انسان",
+"مرسلات",
+"نبأ",
+"نازعات",
+"عبس",
+"تکویر",
+"انفطار",
+"مطففین",
+"انشقاق",
+"بروج",
+"طارق",
+"اعلی",
+"غاشیه",
+"فجر",
+"بلد",
+"شمس",
+"لیل",
+"ضحی",
+"شرح",
+"تین",
+"علق",
+"قدر",
+"بینه",
+"زلزله",
+"عادیات",
+"قارعه",
+"تکاثر",
+"عصر",
+"همزه",
+"فیل",
+"قریش",
+"ماعون",
+"کوثر",
+"کافرون",
+"نصر",
+"مسد",
+"اخلاص",
+"فلق",
+"ناس"
+
+];
+
+
+
+
+
+let surahContainer=
+
+document.getElementById("surahList");
+
+
+
+
+function showSurahList(){
+
+
+
+surahContainer.innerHTML="";
+
+
+
+surahs.forEach((name,index)=>{
+
+
+
+surahContainer.innerHTML +=`
+
+
+<div class="card"
+
+onclick="openSurah(${index+1})"
+
+style="cursor:pointer">
+
+
+<div>
+
+${index+1}
+
+</div>
+
+
+<b>
+
+سوره ${name}
+
+</b>
+
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+
+}
+
+
+
+showSurahList();
+
+
+
+
+
+
+
+
+
+// جستجو
+
+
+document
+.getElementById("search")
+.addEventListener(
+"input",
+
+function(){
+
+
+
+let value=this.value;
+
+
+
+document
+.querySelectorAll("#surahList .card")
+.forEach(card=>{
+
+
+
+if(card.innerText.includes(value)){
+
+
+card.style.display="block";
+
+
+}
+
+else{
+
+
+card.style.display="none";
+
+
+}
+
+
+});
+
+
+}
+
+);
+
+
+
+
+
+
+
+
+
+let currentSurah=1;
+
+
+
+
+
+
+async function openSurah(id){
+
+
+
+currentSurah=id;
+
+
+
+localStorage.setItem(
+"lastSurah",
+id
+);
+
+
+
+surahContainer.innerHTML=
+
+
+`
+
+<div class="card">
+
+<h3>
+
+در حال دریافت آیات...
+
+</h3>
+
+
+<div id="ayahContainer"></div>
+
+
+<br>
+
+
+<button onclick="showSurahList()">
+
+بازگشت
+
+</button>
+
+
+</div>
+
+`;
+
+
+
+
+
+try{
+
+
+let response=
+
+await fetch(
+
+"https://api.alquran.cloud/v1/surah/"+id+"/quran-uthmani"
+
+);
+
+
+
+let result=
+
+await response.json();
+
+
+
+let ayahs=result.data.ayahs;
+
+
+
+let box=
+
+document.getElementById("ayahContainer");
+
+
+
+box.innerHTML="";
+
+
+
+
+ayahs.forEach(ayah=>{
+
+
+
+box.innerHTML+=
+
+
+`
+
+<p style="font-size:20px;line-height:2.5">
+
+
+${ayah.text}
+
+﴿${ayah.numberInSurah}﴾
+
+
+</p>
+
+
+<hr>
+
+
+`;
+
+
+
+});
+
+
+
+
+}
+
+catch(e){
+
+
+document.getElementById("ayahContainer").innerHTML=
+
+"خطا در دریافت قرآن";
+
+
+}
+
+
+
+}// =============================
+// پلیر صوت قرآن + بوکمارک
+// =============================
+
+
+let audio = new Audio();
+
+
+
+let reciter =
+
+localStorage.getItem("reciter")
+
+||
+
+"afs";
+
+
+
+
+const reciters = {
+
+
+afs:
+
+"https://server8.mp3quran.net/afs/",
+
+
+sds:
+
+"https://server11.mp3quran.net/sds/"
+
+};
+
+
+
+
+
+
+function playQuran(){
+
+
+
+let num=
+
+String(currentSurah).padStart(3,"0");
+
+
+
+audio.src=
+
+reciters[reciter]
+
++
+
+num
+
++
+
+".mp3";
+
+
+
+audio.play();
+
+
+
+}
+
+
+
+
+
+
+function pauseQuran(){
+
+
+audio.pause();
+
+
+}
+
+
+
+
+
+function nextSurah(){
+
+
+
+if(currentSurah<114){
+
+
+currentSurah++;
+
+
+playQuran();
+
+
+}
+
+
+}
+
+
+
+
+
+
+function previousSurah(){
+
+
+
+if(currentSurah>1){
+
+
+currentSurah--;
+
+
+playQuran();
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+function selectReciter(name){
+
+
+
+reciter=name;
+
+
+
+localStorage.setItem(
+
+"reciter",
+
+name
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+let bookmarks=
+
+JSON.parse(
+
+localStorage.getItem("bookmarks")
+
+||
+
+"[]"
+
+);
+
+
+
+
+
+
+
+function addBookmark(){
+
+
+
+if(
+
+!bookmarks.includes(currentSurah)
+
+){
+
+
+
+bookmarks.push(currentSurah);
+
+
+
+localStorage.setItem(
+
+"bookmarks",
+
+JSON.stringify(bookmarks)
+
+);
+
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+// =============================
+// اذان
+// =============================
+
+
+
+let azanEnabled=
+
+localStorage.getItem("azan")
+
+!==
+
+"off";
+
+
+
+
+
+let azanAudio=new Audio();
+
+
+
+function toggleAzan(){
+
+
+
+azanEnabled=!azanEnabled;
+
+
+
+localStorage.setItem(
+
+"azan",
+
+azanEnabled
+
+?
+
+"on"
+
+:
+
+"off"
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+function requestNotify(){
+
+
+
+if(
+
+"Notification" in window
+
+){
+
+
+Notification.requestPermission();
+
+
+}
+
+
+}
+
+
+
+
+
+function azanNotification(){
+
+
+
+if(
+
+Notification.permission==="granted"
+
+){
+
+
+
+new Notification(
+
+"راه نور 🕌",
+
+{
+
+body:
+
+"وقت نماز فرا رسیده است"
+
+}
+
+);
+
+
+}
+
+
+
+}
+
+
+
+
+
+function playAzan(){
+
+
+
+if(!azanEnabled)
+
+return;
+
+
+
+azanAudio.src=
+
+"https://www.islamcan.com/audio/adhan/azan1.mp3";
+
+
+
+azanAudio.play();
+
+
+
+azanNotification();
+
+
+
+}
+
+
+
+
+
+
+
+
+function checkAzan(){
+
+
+
+if(
+
+Object.keys(prayerTimes).length===0
+
+)
+
+return;
+
+
+
+let now=
+
+new Date()
+
+.toTimeString()
+
+.substring(0,5);
+
+
+
+let times=[
+
+prayerTimes.Fajr,
+
+prayerTimes.Dhuhr,
+
+prayerTimes.Asr,
+
+prayerTimes.Maghrib,
+
+prayerTimes.Isha
+
+];
+
+
+
+
+if(
+
+times.includes(now)
+
+){
+
+
+playAzan();
+
+
+}
+
+
+}
+
+
+
+
+setInterval(
+
+checkAzan,
+
+30000
+
+);
+// =============================
+// قبله نما
+// =============================
+
+
+const kaaba = {
+
+lat:21.4225,
+
+lon:39.8262
+
+};
+
+
+
+
+
+
+function distanceToMakkah(lat1,lon1){
+
+
+
+let R=6371;
+
+
+
+let dLat=
+
+(kaaba.lat-lat1)
+
+*
+
+Math.PI/180;
+
+
+
+let dLon=
+
+(kaaba.lon-lon1)
+
+*
+
+Math.PI/180;
+
+
+
+
+let a=
+
+Math.sin(dLat/2)**2
+
++
+
+Math.cos(lat1*Math.PI/180)
+
+*
+
+Math.cos(kaaba.lat*Math.PI/180)
+
+*
+
+Math.sin(dLon/2)**2;
+
+
+
+
+let c=
+
+2*
+
+Math.atan2(
+
+Math.sqrt(a),
+
+Math.sqrt(1-a)
+
+);
+
+
+
+return R*c;
+
+
+}
+
+
+
+
+
+
+
+
+function calculateQibla(lat,lon){
+
+
+
+let dLon=
+
+(kaaba.lon-lon)
+
+*
+
+Math.PI/180;
+
+
+
+let y=
+
+Math.sin(dLon);
+
+
+
+let x=
+
+Math.cos(lat*Math.PI/180)
+
+*
+
+Math.tan(kaaba.lat*Math.PI/180)
+
+-
+
+Math.sin(lat*Math.PI/180)
+
+*
+
+Math.cos(dLon);
+
+
+
+let angle=
+
+Math.atan2(y,x)
+
+*
+
+180
+
+/
+
+Math.PI;
+
+
+
+return (angle+360)%360;
+
+
+}
+
+
+
+
+
+
+
+
+
+function getQibla(){
+
+
+
+if(!navigator.geolocation)
+
+return;
+
+
+
+navigator.geolocation.getCurrentPosition(
+
+position=>{
+
+
+let lat=
+
+position.coords.latitude;
+
+
+
+let lon=
+
+position.coords.longitude;
+
+
+
+let angle=
+
+calculateQibla(lat,lon);
+
+
+
+let distance=
+
+distanceToMakkah(lat,lon);
+
+
+
+
+
+document.getElementById("qiblaInfo").innerHTML=
+
+`
+
+🧭 جهت قبله:
+
+${Math.round(angle)}
+
+درجه
+
+
+<br><br>
+
+
+🕋 فاصله تا مکه:
+
+${Math.round(distance)}
+
+کیلومتر
+
+`;
+
+
+
+}
+
+
+);
+
+
+
+}
+
+
+
+
+
+getQibla();
+
+
+
+
+
+
+
+
+
+// =============================
+// ثبت PWA
+// =============================
+
+
+if(
+
+"serviceWorker" in navigator
+
+){
+
+
+
+navigator.serviceWorker.register(
+
+"sw.js"
+
+)
+
+.then(()=>{
+
+
+console.log(
+"راه نور آماده آفلاین شد"
+);
+
+
+});
+
+
+}
+
+
+
+
+
+
+
+
+
+// پایان جاوااسکریپت
+
+
+</script>
+
+
+
+
+
+</main>
+<footer style="
+text-align:center;
+padding:20px;
+opacity:.7;
+font-size:14px;
+">
+Version 1.0 - RZ_HAMZEH
+</footer>
+
+</body>
+
+
+</html>
